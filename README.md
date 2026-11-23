@@ -15,6 +15,8 @@ Plus read-only **reviewers**, a model escalation ladder, and four multi-agent pa
 
 It works with **Claude Code** and **OpenAI Codex** from the same skill folder, and ships a **claude.ai** variant for chats without subagents.
 
+![Roles and authority: the owner makes human decisions, the Supervisor coordinates, the Developer is the only role that writes code, the Operator runs bounded tasks, and reviewers are read-only](docs/diagrams/roles.svg)
+
 ## Why
 
 Multi-agent setups fail in predictable ways: two agents write to the same files, an agent approves its own work, a "reviewer" just confirms the hypothesis it was handed, a cheap model is trusted with a migration, a passing test gets reported as "released". This skill encodes the rules that prevent those failures:
@@ -28,9 +30,19 @@ Multi-agent setups fail in predictable ways: two agents write to the same files,
 - **Humans decide human things.** Merge, deploy, publishing and production are never inferred from "go implement it".
 - **The workflow is opt-in.** Ordinary tasks stay ordinary; the skill only activates when you ask for roles, delegation or parallel work.
 
+## Which pattern when
+
+Patterns are building blocks, not rules. Team setups win when the work splits cleanly and lose when each step depends on the last, so the skill only parallelizes what is truly independent and routes everything else to a single Developer.
+
+![Flowchart: no request for roles means a single agent; independent parts with clean file boundaries mean lanes; an objective verifier means Best of N; a judgment call means a council of models; otherwise a single Developer. Every code change then goes through review](docs/diagrams/choose-pattern.svg)
+
+![The four patterns: a reviewer team with one focus per reviewer, Best of N with a frozen verifier, lanes with frozen contracts and an integration step, and a council of models with blind judges](docs/diagrams/patterns.svg)
+
 ## Model ladder
 
 Profiles map to a cost/capability ladder. The two vendors' ladders do not have the same number of rungs: Claude has Opus between Sonnet and Fable, so Opus takes the "first escalation" slot that Sol at high effort fills on Codex.
+
+![Model ladder: Astra and Fable at the top, Sol at high effort and Opus as first escalation, Sol and Sonnet as default, Terra unused, Luna and Haiku as economy, with the profiles that use each rung](docs/diagrams/model-ladder.svg)
 
 | Profile | Claude Code | Codex |
 |---|---|---|
@@ -53,6 +65,7 @@ skills/conductor-agent-roles/      # the skill (Claude Code + Codex)
 agents/claude-code/*.md            # Claude Code subagent profiles
 agents/codex/*.toml                # Codex agent profiles
 variants/claude-ai/                # claude.ai variant (no subagents)
+docs/diagrams/*.svg                # diagrams (light and dark themes)
 ```
 
 ## Install

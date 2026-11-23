@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 480" width="820" height="480" role="img" aria-label="Roles and authority: the owner decides, the Supervisor coordinates, the Developer writes code, the Operator executes bounded tasks, reviewers are read-only">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; text-anchor: middle; }
+    .t { font-size: 15px; font-weight: 600; }
+    .s { font-size: 12.5px; fill: #59636e; }
+    .lbl { font-size: 12px; fill: #59636e; }
+    .start { text-anchor: start; }
+    .end { text-anchor: end; }
+    .ln { stroke: #8c959f; stroke-width: 1.5; fill: none; }
+    .ah { fill: #8c959f; }
+    rect { stroke-width: 1.5; }
+    .own { fill: #f6f8fa; stroke: #8c959f; }
+    .sup { fill: #fbefff; stroke: #8250df; }
+    .dev { fill: #ddf4ff; stroke: #0969da; }
+    .ops { fill: #dafbe1; stroke: #1a7f37; }
+    .rev { fill: #fff1e5; stroke: #bc4c00; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #e6edf3; }
+      .s, .lbl { fill: #9198a1; }
+      .ln { stroke: #656c76; }
+      .ah { fill: #656c76; }
+      .own { fill: #151b23; stroke: #656c76; }
+      .sup { fill: #2a1f47; stroke: #a371f7; }
+      .dev { fill: #0c2d4f; stroke: #4493f8; }
+      .ops { fill: #0f3020; stroke: #3fb950; }
+      .rev { fill: #3d2410; stroke: #f0883e; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+    </marker>
+  </defs>
+
+  <rect x="260" y="16" width="300" height="62" rx="10" class="own"/>
+  <text x="410" y="42" class="t">Owner (human)</text>
+  <text x="410" y="63" class="s">product · cost · legal · release</text>
+
+  <line x1="410" y1="80" x2="410" y2="132" class="ln" marker-start="url(#a)" marker-end="url(#a)"/>
+  <text x="422" y="110" class="lbl start">decisions only, with a recommendation and trade-off</text>
+
+  <rect x="210" y="134" width="400" height="72" rx="10" class="sup"/>
+  <text x="410" y="162" class="t">Supervisor · main chat</text>
+  <text x="410" y="185" class="s">context · scope · acceptance criteria · gates · verdict</text>
+
+  <line x1="300" y1="206" x2="142" y2="316" class="ln" marker-end="url(#a)"/>
+  <line x1="410" y1="206" x2="410" y2="316" class="ln" marker-end="url(#a)"/>
+  <line x1="520" y1="206" x2="678" y2="316" class="ln" marker-end="url(#a)"/>
+  <text x="206" y="258" class="lbl end">contract</text>
+  <text x="418" y="266" class="lbl start">work order</text>
+  <text x="612" y="252" class="lbl start">diff + criteria</text>
+  <text x="612" y="268" class="lbl start">(not the conclusion)</text>
+
+  <rect x="25" y="318" width="230" height="98" rx="10" class="dev"/>
+  <text x="140" y="346" class="t">Developer</text>
+  <text x="140" y="370" class="s">the only role that writes code</text>
+  <text x="140" y="390" class="s">one writer per tree</text>
+
+  <rect x="295" y="318" width="230" height="98" rx="10" class="ops"/>
+  <text x="410" y="346" class="t">Operator</text>
+  <text x="410" y="370" class="s">bounded, explicit tasks</text>
+  <text x="410" y="390" class="s">evidence · no authority over code</text>
+
+  <rect x="565" y="318" width="230" height="98" rx="10" class="rev"/>
+  <text x="680" y="346" class="t">Reviewers</text>
+  <text x="680" y="370" class="s">read-only · fresh context</text>
+  <text x="680" y="390" class="s">find issues, never fix them</text>
+
+  <text x="410" y="448" class="lbl">A role is an authority boundary: a stronger model never adds permissions.</text>
+  <text x="410" y="468" class="lbl">Every return: role · status · evidence · validations done / not done · blockers · nextActor · next action</text>
+</svg>

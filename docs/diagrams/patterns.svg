@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 590" width="830" height="590" role="img" aria-label="The four multi-agent patterns: reviewer team, Best of N, lanes and council of models">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1f2328; text-anchor: middle; }
+    .h { font-size: 17px; font-weight: 700; text-anchor: start; }
+    .sub { font-size: 12.5px; fill: #59636e; text-anchor: start; }
+    .b { font-size: 12.5px; }
+    .bb { font-size: 12.5px; font-weight: 600; }
+    .lbl { font-size: 12px; fill: #59636e; text-anchor: start; }
+    .ln { stroke: #8c959f; stroke-width: 1.4; fill: none; }
+    .ah { fill: #8c959f; }
+    rect { stroke-width: 1.5; }
+    .panel { fill: none; stroke: #d1d9e0; }
+    .qb { fill: #ffffff; stroke: #59636e; }
+    .own { fill: #f6f8fa; stroke: #8c959f; }
+    .sup { fill: #fbefff; stroke: #8250df; }
+    .dev { fill: #ddf4ff; stroke: #0969da; }
+    .ops { fill: #dafbe1; stroke: #1a7f37; }
+    .rev { fill: #fff1e5; stroke: #bc4c00; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #e6edf3; }
+      .sub, .lbl { fill: #9198a1; }
+      .ln { stroke: #656c76; }
+      .ah { fill: #656c76; }
+      .panel { stroke: #3d444d; }
+      .qb { fill: #0d1117; stroke: #9198a1; }
+      .own { fill: #151b23; stroke: #656c76; }
+      .sup { fill: #2a1f47; stroke: #a371f7; }
+      .dev { fill: #0c2d4f; stroke: #4493f8; }
+      .ops { fill: #0f3020; stroke: #3fb950; }
+      .rev { fill: #3d2410; stroke: #f0883e; }
+    }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="ah"/>
+    </marker>
+  </defs>
+
+  <!-- A: Reviewer team -->
+  <g transform="translate(10,10)">
+    <rect x="0" y="0" width="400" height="280" rx="12" class="panel"/>
+    <text x="20" y="32" class="h">Reviewer team</text>
+    <text x="20" y="52" class="sub">relevant changes</text>
+    <rect x="20" y="118" width="78" height="48" rx="8" class="own"/>
+    <text x="59" y="138" class="b">diff +</text>
+    <text x="59" y="155" class="b">criteria</text>
+    <rect x="140" y="70" width="112" height="32" rx="8" class="rev"/>
+    <text x="196" y="91" class="b">correctness</text>
+    <rect x="140" y="112" width="112" height="32" rx="8" class="rev"/>
+    <text x="196" y="133" class="b">security</text>
+    <rect x="140" y="154" width="112" height="32" rx="8" class="rev"/>
+    <text x="196" y="175" class="b">simplicity</text>
+    <rect x="140" y="196" width="112" height="32" rx="8" class="rev"/>
+    <text x="196" y="217" class="b">UX / a11y</text>
+    <path d="M98,142 L138,86 M98,142 L138,128 M98,142 L138,170 M98,142 L138,212" class="ln" marker-end="url(#a)"/>
+    <rect x="292" y="118" width="88" height="48" rx="8" class="sup"/>
+    <text x="336" y="138" class="bb">Supervisor</text>
+    <text x="336" y="155" class="b">verdict</text>
+    <path d="M252,86 L290,142 M252,128 L290,142 M252,170 L290,142 M252,212 L290,142" class="ln" marker-end="url(#a)"/>
+    <text x="20" y="262" class="lbl">read-only · fresh every round · max 3 rounds</text>
+  </g>
+
+  <!-- B: Best of N -->
+  <g transform="translate(420,10)">
+    <rect x="0" y="0" width="400" height="280" rx="12" class="panel"/>
+    <text x="20" y="32" class="h">Best of N</text>
+    <text x="20" y="52" class="sub">objective verifier, frozen before the attempts</text>
+    <rect x="16" y="118" width="74" height="48" rx="8" class="own"/>
+    <text x="53" y="138" class="b">same</text>
+    <text x="53" y="155" class="b">base SHA</text>
+    <rect x="118" y="70" width="86" height="32" rx="8" class="dev"/>
+    <text x="161" y="91" class="b">variant 1</text>
+    <rect x="118" y="112" width="86" height="32" rx="8" class="dev"/>
+    <text x="161" y="133" class="b">variant 2</text>
+    <rect x="118" y="154" width="86" height="32" rx="8" class="dev"/>
+    <text x="161" y="175" class="b">variant 3</text>
+    <rect x="118" y="196" width="86" height="32" rx="8" class="dev"/>
+    <text x="161" y="217" class="b">variant 4</text>
+    <path d="M90,142 L116,86 M90,142 L116,128 M90,142 L116,170 M90,142 L116,212" class="ln" marker-end="url(#a)"/>
+    <rect x="232" y="112" width="72" height="60" rx="8" class="qb"/>
+    <text x="268" y="138" class="bb">frozen</text>
+    <text x="268" y="155" class="b">verifier</text>
+    <path d="M204,86 L230,142 M204,128 L230,142 M204,170 L230,142 M204,212 L230,142" class="ln" marker-end="url(#a)"/>
+    <rect x="322" y="118" width="64" height="48" rx="8" class="rev"/>
+    <text x="354" y="138" class="bb">winner</text>
+    <text x="354" y="155" class="b">→ review</text>
+    <line x1="304" y1="142" x2="320" y2="142" class="ln" marker-end="url(#a)"/>
+    <text x="20" y="262" class="lbl">isolated worktrees · best passing score wins</text>
+  </g>
+
+  <!-- C: Lanes -->
+  <g transform="translate(10,300)">
+    <rect x="0" y="0" width="400" height="280" rx="12" class="panel"/>
+    <text x="20" y="32" class="h">Lanes</text>
+    <text x="20" y="52" class="sub">independent parts, clean file boundaries</text>
+    <rect x="16" y="118" width="80" height="48" rx="8" class="sup"/>
+    <text x="56" y="138" class="bb">frozen</text>
+    <text x="56" y="155" class="b">contracts</text>
+    <rect x="128" y="76" width="112" height="36" rx="8" class="dev"/>
+    <text x="184" y="99" class="b">lane · web/</text>
+    <rect x="128" y="124" width="112" height="36" rx="8" class="dev"/>
+    <text x="184" y="147" class="b">lane · api/</text>
+    <rect x="128" y="172" width="112" height="36" rx="8" class="dev"/>
+    <text x="184" y="195" class="b">lane · docs/</text>
+    <path d="M96,142 L126,94 M96,142 L126,142 M96,142 L126,190" class="ln" marker-end="url(#a)"/>
+    <rect x="272" y="114" width="112" height="56" rx="8" class="ops"/>
+    <text x="328" y="137" class="bb">integrate</text>
+    <text x="328" y="155" class="b">+ e2e check</text>
+    <path d="M240,94 L270,142 M240,142 L270,142 M240,190 L270,142" class="ln" marker-end="url(#a)"/>
+    <text x="20" y="262" class="lbl">one owner per path · each lane in its own worktree</text>
+  </g>
+
+  <!-- D: Council of models -->
+  <g transform="translate(420,300)">
+    <rect x="0" y="0" width="400" height="280" rx="12" class="panel"/>
+    <text x="20" y="32" class="h">Council of models</text>
+    <text x="20" y="52" class="sub">judgment calls with no automatic check</text>
+    <rect x="16" y="76" width="96" height="36" rx="8" class="dev"/>
+    <text x="64" y="99" class="b">Sonnet</text>
+    <rect x="16" y="124" width="96" height="36" rx="8" class="dev"/>
+    <text x="64" y="147" class="b">Opus</text>
+    <rect x="16" y="172" width="96" height="36" rx="8" class="dev"/>
+    <text x="64" y="195" class="b">Codex (GPT)</text>
+    <rect x="142" y="106" width="104" height="72" rx="8" class="rev"/>
+    <text x="194" y="131" class="bb">blind judges</text>
+    <text x="194" y="150" class="b">names hidden</text>
+    <text x="194" y="167" class="b">order shuffled</text>
+    <path d="M112,94 L140,142 M112,142 L140,142 M112,190 L140,142" class="ln" marker-end="url(#a)"/>
+    <rect x="276" y="114" width="108" height="56" rx="8" class="sup"/>
+    <text x="330" y="137" class="bb">merge the best</text>
+    <text x="330" y="155" class="b">→ owner decides</text>
+    <line x1="246" y1="142" x2="274" y2="142" class="ln" marker-end="url(#a)"/>
+    <text x="20" y="262" class="lbl">throwaway proposals · implement after the choice</text>
+  </g>
+</svg>
