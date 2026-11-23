@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conductor Agent Roles"
+  short_description: "Supervisor, Developer and Operator roles with model escalation"
+  default_prompt: "Use $conductor-agent-roles to apply the role explicitly requested for this task, preserving its authority boundaries and gates."
