@@ -102,6 +102,20 @@ Same profiles as the main skill. Claude Code uses the model and effort in the se
 - The best score that passes every gate wins; on a tie, the simplest. The winner still goes through normal review.
 - State the extra cost (N times more output) before starting.
 
+### Lanes (parts with an owner)
+
+- Use when the work splits into independent parts with a clear boundary (e.g. frontend, backend, docs). Here lanes run in sequence, each in its own block and artifact: the gain is per-part ownership discipline, not speed.
+- Before starting, the Supervisor defines the parts, the contracts between them (interfaces, payloads, types), frozen, and gives anything shared a single owner. A lane block does not change what belongs to another; if it needs to change a contract, it goes back to the Supervisor.
+- At the end, an integration block merges the parts and checks that they work together; then normal review.
+- Do not use it when each step depends on the previous one or the parts touch the same things: a single Developer does better there.
+
+### Council of models (decisions without a verifier)
+
+- Use when there is no automatic verifier and the decision is a judgment call: architecture, visual design, data modeling, naming. With a verifier, use competing alternatives.
+- Recommend that the owner generate 2–4 proposals in separate new conversations, each with a different model in the selector (e.g. Sonnet, Opus, Fable; another vendor if they want), with the same briefing and criteria. Deliver that briefing ready to paste.
+- Judging happens in a new conversation: the owner pastes the proposals without model names and in shuffled order, with the criteria defined beforehand. The judge scores and justifies without knowing who made what.
+- The Supervisor merges the strongest ideas into a final proposal and records why. Product/business decisions stay with the owner. State the cost (one conversation per proposal, plus judging) before starting. At most 2 rounds.
+
 ## Handoff and economy
 
 - Minimum handoff between roles (and for taking the work to Claude Code or a new conversation): role/status; goal, limits and invariants; target/environment; result and evidence; validations done and not done; gates; blockers and pending decisions; `nextActor` and one concrete action.

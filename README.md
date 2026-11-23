@@ -6,7 +6,12 @@ An agent skill that turns "use subagents" into a disciplined workflow with three
 - **Developer**: the only role allowed to write code.
 - **Operator**: executes bounded, explicit tasks and collects evidence. No authority over code.
 
-Plus read-only **reviewers**, a model escalation ladder, and two parallel patterns (a reviewer team and Best of N).
+Plus read-only **reviewers**, a model escalation ladder, and four multi-agent patterns:
+
+- **Reviewer team**: parallel read-only reviewers, one focus each, fresh every round.
+- **Best of N**: competing variants in isolated worktrees, picked by a verifier frozen before the attempts.
+- **Lanes**: parallel Developers that each own a declared set of paths, with frozen contracts and an integration step.
+- **Council of models**: independent proposals from different models, scored blind, for judgment calls without an automatic check.
 
 It works with **Claude Code** and **OpenAI Codex** from the same skill folder, and ships a **claude.ai** variant for chats without subagents.
 
@@ -17,7 +22,8 @@ Multi-agent setups fail in predictable ways: two agents write to the same files,
 - **A role is an authority boundary, not a model.** Escalating to a stronger model never grants more permissions.
 - **One writer per tree.** Parallel writing only happens in isolated worktrees.
 - **Independent review.** Reviewers get the diff and the criteria, never the Supervisor's conclusion or each other's findings.
-- **Best of N only with a frozen, objective verifier.** No verifier, no tournament.
+- **Best of N only with a frozen, objective verifier.** No verifier, no tournament: use a council of models instead.
+- **Parallelize only what is truly independent.** Lanes need a clean file boundary; coupled, step-by-step work and small fixes stay with a single Developer.
 - **States are not interchangeable.** Implementation, local validation, CI, UI, staging and release are reported separately; one never proves another.
 - **Humans decide human things.** Merge, deploy, publishing and production are never inferred from "go implement it".
 - **The workflow is opt-in.** Ordinary tasks stay ordinary; the skill only activates when you ask for roles, delegation or parallel work.

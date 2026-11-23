@@ -97,6 +97,22 @@ The Claude ladder has one more rung than OpenAI's: Opus sits between Sonnet and 
 - The winner still goes through normal review (reviewer team when applicable): beating the verifier does not prove the rest and may signal overfitting to the eval. Record the result, discard the other worktrees and follow the normal integration gates.
 - Cost is about N× tokens: state N and the reason when starting. Do not increase N unless the score curve justifies it.
 
+### Lanes (parallel parts with an owner)
+
+- Use when the task splits into independent parts with a clear file boundary (e.g. frontend in `web/`, backend in `api/`, docs in `docs/`). Each lane is a Developer that exclusively owns a declared set of paths.
+- Before launching, the Supervisor defines each lane's paths, the contracts between lanes (interfaces, payloads, types), frozen before work starts, and who integrates. Shared files (lockfile, schema, common types, configuration) belong to a single lane or to the Supervisor, never to two.
+- Each lane runs in its own isolated worktree from the same base SHA: the single-writer-per-tree rule still holds. A lane does not read or edit other lanes' paths; if it needs to change a contract, it stops and hands back to the Supervisor.
+- At the end, an integration step (Developer or Operator) merges the lanes, resolves conflicts and runs end-to-end verification; then normal review (reviewer team when applicable).
+- Do not use it when each step depends on the previous one, when parts touch the same files, or for a small local bug: a single Developer does better there. Parallelizing coupled work makes results worse, not faster.
+
+### Council of models (decisions without a verifier)
+
+- Use when there is no automatic verifier and the decision is a judgment call: architecture, visual design, data modeling, naming, technical strategy. If there is an objective verifier, use Best of N.
+- Ask for 2–4 independent proposals, each from a different model: different families in the same runtime (e.g. Sonnet, Opus, Fable) and, when possible, different vendors (Claude Code + Codex). Same briefing and criteria for all; none sees the others.
+- Fresh, read-only judges (supervisor_review profile) score the proposals anonymized, with model names removed and order shuffled, against criteria defined before the proposals. Prefer judges from varied models, not only the same model as one of the proposals.
+- The Supervisor consolidates the scores, merges the strongest ideas into a final proposal and records why. Product/business decisions stay with the owner, with a recommendation and the trade-off.
+- Proposals are throwaway documents or prototypes; the Developer implements only after the choice. Cost ≈ (proposals + judges)× one run: state it when starting. At most 2 rounds.
+
 ## Context, handoff and economy
 
 - When the API offers it, prefer a fork without history or with few turns and a sufficient briefing. Full history is an exception justified by a concrete dependency.
